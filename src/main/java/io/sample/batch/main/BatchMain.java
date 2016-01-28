@@ -12,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class BatchMain {
 
 	final static Logger logger = LoggerFactory.getLogger(BatchMain.class);
+
 	/**
 	 * @param args
 	 * @throws Exception 

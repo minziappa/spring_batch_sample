@@ -59,29 +59,6 @@ allprojects {
     }
 }
 
-// other expresstion
-/*
-final String DEFAULT_PROFILE = 'config/develop'
-
-allprojects {
-	if(project.hasProperty('profile') && profile == "staging") {
-		ext.profile = "/home/ioBatch/batchSample/config/staging"
-	} else if(project.hasProperty('profile') && profile == "product") {
-		ext.profile = "/home/ioBatch/batchSample/config/product"
-	} else {
-		ext.profile = DEFAULT_PROFILE
-	}
-
-    sourceSets {
-        main {
-            resources {
-                srcDir "${profile}"
-            }
-        }
-    }
-}
-*/
-
 //  gradle zip -Pprofile=staging
 task zip(type: Zip) {
 	from 'src/dist'

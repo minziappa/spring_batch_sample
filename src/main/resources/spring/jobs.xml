@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<bean id="report" class="cio.sample.batch.bean.Report" scope="prototype" />
-	<bean id="itemProcessor" class="io.sample.batch.mapper.CustomItemProcessor" />
+	<bean id="report" class="io.sample.batch.bean.Report" scope="prototype" />
+	<bean id="itemProcessor" class="io.sample.batch.job.CustomItemProcessor" />
 
 	<batch:job id="helloWorldJob">
 	  <batch:step id="step1">
@@ -26,14 +27,12 @@
 		<property name="lineMapper">
 		    <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 			<property name="lineTokenizer">
-				<bean
-					class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+				<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
 					<property name="names" value="id,sales,qty,staffName,date" />
 				</bean>
 			</property>
 			<property name="fieldSetMapper">
-				<bean class="com.mkyong.ReportFieldSetMapper" />
-				    
+				<bean class="io.sample.batch.mapper.ReportFieldSetMapper" />
 				 <!-- if no data type conversion, use BeanWrapperFieldSetMapper to map by name
 				<bean
 					class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
