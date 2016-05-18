@@ -1,4 +1,4 @@
-package io.sample.batch.job;
+package io.sample.batch.job.processor;
 
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
