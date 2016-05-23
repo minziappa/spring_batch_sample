@@ -18,10 +18,12 @@
 
 	<!-- Set the base package -->
 	<context:component-scan base-package="io.sample.batch.service.impl" />
+	<!-- Utilities for test -->
+	<bean class="org.springframework.batch.test.JobLauncherTestUtils" />
 
 	<!-- Common Resource -->
 	<import resource="classpath:spring/common.xml"/>
-	<import resource="classpath:spring/h2.xml"/>
+	<import resource="classpath:spring/h2-test.xml"/>
 	<import resource="classpath:spring/sql.xml"/>
 	<import resource="classpath:spring/jobs.xml"/>
 	<import resource="classpath:spring/service.xml"/>

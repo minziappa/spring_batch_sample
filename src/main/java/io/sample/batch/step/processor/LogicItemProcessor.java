@@ -1,4 +1,4 @@
-package io.sample.batch.job.processor;
+package io.sample.batch.step.processor;
 
 import org.springframework.batch.item.ItemProcessor;
 
