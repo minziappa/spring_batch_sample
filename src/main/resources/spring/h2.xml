@@ -13,8 +13,15 @@
 		<jdbc:script location="org/springframework/batch/core/schema-h2.sql" />
 	</jdbc:embedded-database>
 
-<!-- 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" > -->
-<!-- 		<constructor-arg ref="dataSource" /> -->
-<!-- 	</bean> -->
+	<bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.h2.Driver"/>
+		<property name="url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=MYSQL;INIT=create schema if not exists one\;SET SCHEMA one"/>
+        <property name="username" value="sa"/>
+        <property name="password" value="" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
+		<constructor-arg ref="myDataSource" />
+	</bean>
 
 </beans>

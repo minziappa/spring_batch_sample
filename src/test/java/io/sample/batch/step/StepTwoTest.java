@@ -14,7 +14,7 @@ public class StepTwoTest extends AbstractStepTest {
 	public void test2() {
 		// Set parameters
 		JobParametersBuilder jobParametersBuilder = new JobParametersBuilder();
-		jobParametersBuilder.addString("test1", "1");
+		jobParametersBuilder.addString("test2", "2");
 		JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
 		jobLauncherTestUtils.launchStep("step2", jobParameters);

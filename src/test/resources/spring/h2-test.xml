@@ -8,7 +8,12 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<jdbc:embedded-database id="dataSource" type="H2">
+		<jdbc:script location="org/springframework/batch/core/schema-drop-h2.sql" />
+		<jdbc:script location="org/springframework/batch/core/schema-h2.sql" />
+	</jdbc:embedded-database>
+
+	<bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.h2.Driver"/>
 		<property name="url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=MYSQL;INIT=create schema if not exists one\;SET SCHEMA one"/>
         <property name="username" value="sa"/>
@@ -34,14 +39,14 @@
     </bean>
 
     <bean class="org.springframework.jdbc.datasource.init.DataSourceInitializer">
-        <property name="dataSource"><ref bean="dataSource"/></property>
+        <property name="dataSource"><ref bean="myDataSource"/></property>
         <property name="databasePopulator"><ref bean="dbInit"/></property>
   		<property name="databaseCleaner"><ref bean="dbCleanup"/></property>
  		<property name="enabled" value="true" />
     </bean>
 
-<!-- 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" > -->
-<!-- 		<constructor-arg ref="dataSource" /> -->
-<!-- 	</bean> -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
+		<constructor-arg ref="myDataSource" />
+	</bean>
 
 </beans>

@@ -18,7 +18,8 @@
 	<bean id="insertSqlWriter" class="java.lang.String">
 		<constructor-arg>
 			<value><![CDATA[
-				INSERT INTO one.home VALUES (:id, :homeName, :homeAddress)
+				INSERT INTO one.home (id, home_name, home_address) 
+					VALUES (:id, :homeName, :homeAddress)
 				]]></value>
 		</constructor-arg>
 	</bean>

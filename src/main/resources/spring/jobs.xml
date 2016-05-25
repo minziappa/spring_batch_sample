@@ -70,16 +70,16 @@
 
 	<!-- Step 2 -->
 	<bean id="selectItemReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="myDataSource" />
 		<property name="sql" ref="selectSqlReader" />
 		<property name="rowMapper" ref="rowMapper"/>
 	</bean>
 	<bean id="rowMapper" class="org.springframework.jdbc.core.BeanPropertyRowMapper">
-		<property name="mappedClass" value="io.sample.batch.bean.model.Home"/>
+		<property name="mappedClass" value="io.sample.batch.bean.model.Users"/>
 	</bean>
 	<bean id="logicItemProcessor" class="io.sample.batch.step.processor.LogicItemProcessor" />
 	<bean id="insertItemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="myDataSource" />
 		<property name="sql" ref="insertSqlWriter" />
 		<!-- It will take care matching between object property and sql name parameter -->
 		<property name="itemSqlParameterSourceProvider">
