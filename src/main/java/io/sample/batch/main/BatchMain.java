@@ -26,18 +26,19 @@ public class BatchMain {
 		
 		// Set parameters
 		JobParametersBuilder jobParametersBuilder = new JobParametersBuilder();
-		jobParametersBuilder.addString("test1", "1");
-		jobParametersBuilder.addString("test2", "2");
+		jobParametersBuilder.addString("test5", "5");
+		jobParametersBuilder.addString("test6", "6");
 		JobParameters jobParameters = jobParametersBuilder.toJobParameters();
 
 		try {
 			JobExecution execution = jobLauncher.run(job, jobParameters);
-			System.out.println("Exit Status : " + execution.getStatus());
+			logger.info("Exit Status : " + execution.getStatus());
 		} catch (Exception e) {
 			logger.error("Exception >> ", e);
 		}
 
 		System.out.println("Done");
+
 	}
 
 }

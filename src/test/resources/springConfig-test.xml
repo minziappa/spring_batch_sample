@@ -26,5 +26,6 @@
 	<import resource="classpath:spring/h2-test.xml"/>
 	<import resource="classpath:spring/sql.xml"/>
 	<import resource="classpath:spring/jobs.xml"/>
+	<import resource="classpath:spring/step.xml"/>
 	<import resource="classpath:spring/service.xml"/>
 </beans>

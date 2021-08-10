@@ -20,6 +20,30 @@
         <property name="password" value="" />
 	</bean>
 
+    <bean id="dbInit" class="org.springframework.jdbc.datasource.init.ResourceDatabasePopulator">
+    	<property name="sqlScriptEncoding" value="UTF-8"/>
+        <property name="scripts">
+            <list>
+            	<value>classpath:sql/create-table.sql</value>
+            </list>
+        </property>
+        <property name="continueOnError" value="true"/>
+    </bean>
+    <bean id="dbCleanup" class="org.springframework.jdbc.datasource.init.ResourceDatabasePopulator">
+        <property name="scripts">
+			<list>
+                <value>classpath:sql/drop-table.sql</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.jdbc.datasource.init.DataSourceInitializer">
+        <property name="dataSource"><ref bean="myDataSource"/></property>
+        <property name="databasePopulator"><ref bean="dbInit"/></property>
+  		<property name="databaseCleaner"><ref bean="dbCleanup"/></property>
+ 		<property name="enabled" value="true" />
+    </bean>
+
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
 		<constructor-arg ref="myDataSource" />
 	</bean>

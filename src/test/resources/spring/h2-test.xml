@@ -25,7 +25,7 @@
         <property name="scripts">
             <list>
             	<value>classpath:sql/create-table.sql</value>
-                <value>classpath:sql/insert-data.sql</value>
+<!--            <value>classpath:sql/insert-data.sql</value>  -->
             </list>
         </property>
         <property name="continueOnError" value="true"/>

@@ -3,11 +3,19 @@ apply plugin: 'eclipse'
 
 version = '0.1'
 
-// apply from: 'gradle/maven.gradle'
-defaultTasks = ['assemble']
+buildscript {
+	repositories { 
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies { 
+    	classpath 'org.ajoberstar:gradle-jacoco:0.1.0'
+	}
+}
 
-sourceCompatibility = '1.7'
-targetCompatibility = '1.7'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 archivesBaseName = 'batchSample'
 
@@ -22,8 +30,8 @@ eclipse {
 	}
 }
 
-String springVersion = '4.2.4.RELEASE'
-String springBatchVersion = '3.0.6.RELEASE'
+String springVersion = '4.3.28.RELEASE'
+String springBatchVersion = '4.2.7.RELEASE'
 String logbackVersion = '1.1.3'
 
 dependencies {
@@ -42,8 +50,8 @@ dependencies {
 	compile 'org.springframework.batch:spring-batch-infrastructure:' + springBatchVersion
 	testCompile 'org.springframework.batch:spring-batch-test:' + springBatchVersion
 	compile 'org.springmodules:spring-modules-jakarta-commons:0.8'
-	compile 'com.h2database:h2:1.4.191'
-	testCompile 'junit:junit:4.12'
+	compile 'com.h2database:h2:1.4.200'
+	testCompile "junit:junit:4.+"
 }
 
 final String DEFAULT_PROFILE = 'develop'

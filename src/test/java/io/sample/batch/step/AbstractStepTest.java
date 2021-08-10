@@ -11,8 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:springConfig-test.xml"})
-//@TestExecutionListeners(listeners = {LiquibaseTestExecutionListener.class,
-//DependencyInjectionTestExecutionListener.class})
+//@TestExecutionListeners(listeners = {LiquibaseTestExecutionListener.class, DependencyInjectionTestExecutionListener.class})
 public abstract class AbstractStepTest {
 
 	@BeforeClass

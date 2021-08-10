@@ -21,6 +21,7 @@ public class SampleServiceImpl extends AbstractService implements SampleService 
 	public void doTest() {
 
 		logger.info("abcd >>> ");
+
 	}
 
 }

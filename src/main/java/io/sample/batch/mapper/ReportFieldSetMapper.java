@@ -3,13 +3,23 @@ package io.sample.batch.mapper;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
 import org.springframework.validation.BindException;
 
 import io.sample.batch.bean.Report;
 
+/**
+ * Step 1 
+ * 
+ * @author house
+ *
+ */
 public class ReportFieldSetMapper implements FieldSetMapper<Report> {
+
+	final Logger logger = LoggerFactory.getLogger(ReportFieldSetMapper.class);
 
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -24,6 +34,9 @@ public class ReportFieldSetMapper implements FieldSetMapper<Report> {
 		//default format yyyy-MM-dd
 		//fieldSet.readDate(4);
 		String date = fieldSet.readString(4);
+		
+		logger.info("step1     data == " + date);
+
 		try {
 			report.setDate(dateFormat.parse(date));
 		} catch (ParseException e) {
